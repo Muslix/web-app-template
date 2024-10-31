@@ -1,0 +1,35 @@
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.vue"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "pinia": "^2.2.5",
+    "sass": "^1.80.5",
+    "vue": "^3.5.12",
+    "vue-router": "4.4.5",
+    "vuetify": "^3.7.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/eslint-config-airbnb": "^8.0.0",
+    "@vue/eslint-config-prettier": "^10.1.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-vue": "^9.30.0",
+    "prettier": "^3.3.3",
+    "sass-loader": "^16.0.2",
+    "vite": "^5.4.10"
+  }
+}
