@@ -8,7 +8,7 @@ const { computed, useRouter } = globalHelpers
 const router = useRouter()
 const userStore = useUserStore()
 const isAuthenticated = computed(() => userStore.isAuthenticated)
-const userName = computed(() => userStore.user ? userStore.user.name : '')
+const userName = computed(() => (userStore.user ? userStore.user.name : ''))
 
 function login() {
   console.log('Logging in...')
@@ -16,7 +16,7 @@ function login() {
 }
 
 function logout() {
-  userStore.setUser(null)
+  userStore.logout()
 }
 
 function goToHome() {
@@ -41,11 +41,14 @@ function goToHome() {
             Hier siehst du deine Investitionen und Finanzdaten.
           </p>
           <p v-else>
-            Du bist derzeit nicht eingeloggt. Klicke auf "Anmelden", um fortzufahren.
+            Du bist derzeit nicht eingeloggt. Klicke auf "Anmelden", um
+            fortzufahren.
           </p>
         </v-card-text>
         <v-card-actions>
-          <v-btn v-if="isAuthenticated" color="error" @click="logout">Abmelden</v-btn>
+          <v-btn v-if="isAuthenticated" color="error" @click="logout"
+            >Abmelden</v-btn
+          >
           <v-btn v-else color="primary" @click="login">Anmelden</v-btn>
         </v-card-actions>
       </v-card>

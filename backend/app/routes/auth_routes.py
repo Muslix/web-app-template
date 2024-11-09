@@ -20,3 +20,4 @@ def login():
         return jsonify({'access_token': token}), 200
     else:
         return jsonify({'message': 'Ungültige Anmeldedaten'}), 401
+

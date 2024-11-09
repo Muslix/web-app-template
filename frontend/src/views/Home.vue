@@ -10,7 +10,10 @@ const router = useRouter()
 const isAuthenticated = computed(() => userStore.isAuthenticated)
 
 function goToLogin() {
-  router.push('/login')
+  router.push('/auth/login')
+}
+function goToRegister() {
+  router.push('/auth/register')
 }
 function goToDashboard() {
   router.push('/dashboard')
@@ -27,9 +30,17 @@ function goToDashboard() {
         Hier kannst du deine Finanzen und Investitionen verfolgen. Melde dich
         an, um das Dashboard zu nutzen.
       </v-card-text>
-      <v-card-actions >
-        <v-btn v-if="!isAuthenticated" color="primary" @click="goToLogin"> Zum Login </v-btn>
-        <v-btn v-else color="primary" @click="goToDashboard"> Zum Dashboard </v-btn>
+      <v-card-actions>
+        <v-btn color="primary" @click="goToRegister">
+          Registrieren
+        </v-btn>
+        <v-btn v-if="!isAuthenticated" color="primary" @click="goToLogin">
+          Zum Login
+        </v-btn>
+        
+        <v-btn v-else color="primary" @click="goToDashboard">
+          Zum Dashboard
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-container>

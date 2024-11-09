@@ -10,7 +10,6 @@ db = SQLAlchemy()
 migrate = Migrate()
 bcrypt = Bcrypt()
 jwt = JWTManager()
-cors = CORS()
 
 def create_app(config_class=Config):
     app = Flask(__name__)
@@ -20,7 +19,8 @@ def create_app(config_class=Config):
     migrate.init_app(app, db)
     bcrypt.init_app(app)
     jwt.init_app(app)
-    cors.init_app(app)
+    CORS(app, resources={r"/*": {"origins": "*"}})
+
 
     with app.app_context():
         # Importieren der Modelle
@@ -29,5 +29,8 @@ def create_app(config_class=Config):
 
     from .routes.auth_routes import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
+    
+    from .routes.user_routes import bp as user_bp
+    app.register_blueprint(user_bp, url_prefix='/user')
 
     return app

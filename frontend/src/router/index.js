@@ -2,14 +2,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import homeRoutes from './modules/homeRoutes'
 import dashboardRoutes from './modules/dashboardRoutes'
-import loginRoutes from './modules/loginRoutes'
-import { useUserStore } from '@/stores' // Importiere Pinia für Authentifizierung
+import authRoutes from './modules/authRoutes'
+import { useUserStore } from '@/stores'
 
-const routes = [
-  ...homeRoutes,
-  ...dashboardRoutes,
-  ...loginRoutes
-]
+const routes = [...homeRoutes, ...dashboardRoutes, ...authRoutes]
 
 const router = createRouter({
   history: createWebHistory(),
@@ -17,12 +13,14 @@ const router = createRouter({
 })
 
 // Navigation Guard
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   const userStore = useUserStore()
-  const isAuthenticated = userStore.isAuthenticated // Annahme: boolean Flag für Auth-Status
-
+  const isAuthenticated = userStore.isAuthenticated
+  if (!userStore.isAuthenticated) {
+    await userStore.fetchUser(); // Versuchen, Benutzerinformationen zu laden
+  }
   if (to.meta.requiresAuth && !isAuthenticated) {
-    next({ name: 'Login' }) // Leitet zur Login-Seite weiter
+    next({ name: 'Login' })
   } else {
     next()
   }

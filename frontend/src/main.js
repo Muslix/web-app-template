@@ -18,11 +18,12 @@ const vuetify = createVuetify({
     directives,
   })
 
-app.use(router)
 app.use(createPinia())
+app.use(router)
 app.use(vuetify)
 
 const userStore = useUserStore()
+await userStore.fetchUser()
 
 // Globaler Watcher für Authentifizierungsstatus
 watch(
