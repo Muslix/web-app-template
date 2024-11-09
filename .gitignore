@@ -1,0 +1,29 @@
+.env
+# Virtuelle Umgebungen
+venv/
+.venv/
+ENV/
+env/
+__pycache__/
+*.pyc
+*.pyo
+# Node Module
+node_modules/
+
+# Log-Dateien
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+# Umgebungsvariablen
+.env
+.env.local
+.env.*.local
+
+# Konfigurationsdateien
+config.json
+# VS Code
+.vscode/
+
+# PyCharm/IntelliJ
+.idea/
+
